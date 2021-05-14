@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>hello xiaojia | wong&#39;s blog</title>
-  <meta name="keywords" content=" hello ">
-  <meta name="description" content="hello xiaojia | wong&#39;s blog">
+  <title>TCP和UDP的区别 | wong&#39;s blog</title>
+  <meta name="keywords" content=" TCP , UDP ">
+  <meta name="description" content="TCP和UDP的区别 | wong&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="对比   UDP TCP    无连接 面向连接   支持一对一、一对多、多对一和多对多的通信 只支持一对一，但支持全双工   直接打包用户层交付的报文 面向字节流   尽最大努力交付 可靠传输，使用流量控制和拥塞控制   首部仅占8字节 首部占20~60字节   概念扩展面向报文应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则">
 <meta property="og:type" content="article">
@@ -249,9 +249,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-hello-xiaojia" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-TCP和UDP的区别" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">hello xiaojia</h1>
+        <h1 class="article-title">TCP和UDP的区别</h1>
     
     <div class="article-meta">
         
@@ -263,7 +263,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="生活">生活</a>
+            <a  data-rel="网络">网络</a>
             
         </span>
         
@@ -271,19 +271,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">hello</a>
+            <a class="color4">TCP</a>
+            
+            <a class="color4">UDP</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-05-14 16:06:52'>2021-05-13 16:13</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-14 17:51:05'>2021-05-14 17:46</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2</span>
+        <span>字数:333</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -302,7 +304,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94"><span class="toc-text">对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E6%89%A9%E5%B1%95"><span class="toc-text">概念扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E6%8A%A5%E6%96%87"><span class="toc-text">面向报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-text">面向字节流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A8%E4%BA%BA%E7%9A%84%E8%82%A9%E8%86%80"><span class="toc-text">巨人的肩膀</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -318,7 +320,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hello xiaojia.</p>
+        <h1 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h1><table>
+<thead>
+<tr>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无连接</td>
+<td>面向连接</td>
+</tr>
+<tr>
+<td>支持一对一、一对多、多对一和多对多的通信</td>
+<td>只支持一对一，但支持全双工</td>
+</tr>
+<tr>
+<td>直接打包用户层交付的报文</td>
+<td>面向字节流</td>
+</tr>
+<tr>
+<td>尽最大努力交付</td>
+<td>可靠传输，使用流量控制和拥塞控制</td>
+</tr>
+<tr>
+<td>首部仅占8字节</td>
+<td>首部占20~60字节</td>
+</tr>
+</tbody></table>
+<h1 id="概念扩展"><a href="#概念扩展" class="headerlink" title="概念扩展"></a>概念扩展</h1><h2 id="面向报文"><a href="#面向报文" class="headerlink" title="面向报文"></a>面向报文</h2><p>应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。</p>
+<h2 id="面向字节流"><a href="#面向字节流" class="headerlink" title="面向字节流"></a>面向字节流</h2><p>TCP发送报文时，是将应用层数据写入TCP缓冲区中，然后由TCP协议来控制发送这里面的数据，而发送的状态是按字节流的方式发送的，跟应用层写下来的报文长度没有任何关系，所以说是流。</p>
+<h1 id="巨人的肩膀"><a href="#巨人的肩膀" class="headerlink" title="巨人的肩膀"></a>巨人的肩膀</h1><p>1.<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c4411d7jb?p=59&spm_id_from=pageDriver">计算机网络微课堂</a></p>
+<p>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ce123_zhouwei/article/details/8976006">面向报文UDP和面向字节流TCP的区别</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以直接发送到邮箱。 </span>

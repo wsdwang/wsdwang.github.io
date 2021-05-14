@@ -6,17 +6,18 @@
   <meta name="keywords" content=" TCP ">
   <meta name="description" content="TCP IP概念 | wong&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="如何学习只看书学习是很枯燥的，并且死记硬背的东西不理解，记忆也不会牢固。所以后面的一些学习会有一些模拟实验的过程，借鉴一些前辈学习的经验。例如看完一个协议，可以通过抓包工具或者编写小程序加深理解的过程。 TCP IP概念首先IP是网络层协议，TCP UDP是传输层协议。 为什么需要IP协议，因为如果只依赖数据链路层Ethernet，数据包只能在广播域传播。 为什么需要TCP，因为众多应用层的协议需">
+<meta name="description" content="对比   UDP TCP    无连接 面向连接   支持一对一、一对多、多对一和多对多的通信 只支持一对一，但支持全双工   直接打包用户层交付的报文 面向字节流   尽最大努力交付 可靠传输，使用流量控制和拥塞控制   首部仅占8字节 首部占20~60字节   概念扩展面向报文应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP IP概念">
-<meta property="og:url" content="http://example.com/2021/05/14/TCP-IP%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:title" content="TCP和UDP的区别">
+<meta property="og:url" content="http://example.com/2021/05/14/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="wong&#39;s blog">
-<meta property="og:description" content="如何学习只看书学习是很枯燥的，并且死记硬背的东西不理解，记忆也不会牢固。所以后面的一些学习会有一些模拟实验的过程，借鉴一些前辈学习的经验。例如看完一个协议，可以通过抓包工具或者编写小程序加深理解的过程。 TCP IP概念首先IP是网络层协议，TCP UDP是传输层协议。 为什么需要IP协议，因为如果只依赖数据链路层Ethernet，数据包只能在广播域传播。 为什么需要TCP，因为众多应用层的协议需">
+<meta property="og:description" content="对比   UDP TCP    无连接 面向连接   支持一对一、一对多、多对一和多对多的通信 只支持一对一，但支持全双工   直接打包用户层交付的报文 面向字节流   尽最大努力交付 可靠传输，使用流量控制和拥塞控制   首部仅占8字节 首部占20~60字节   概念扩展面向报文应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-14T07:45:43.000Z">
-<meta property="article:modified_time" content="2021-05-14T08:07:08.023Z">
+<meta property="article:published_time" content="2021-05-14T09:46:50.000Z">
+<meta property="article:modified_time" content="2021-05-14T09:51:05.409Z">
 <meta property="article:author" content="望岳阁">
 <meta property="article:tag" content="TCP">
+<meta property="article:tag" content="UDP">
 <meta name="twitter:card" content="summary">
 
 
@@ -91,7 +92,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(2)</small>
+                <small>(3)</small>
             
         </div>
     </li>
@@ -116,7 +117,7 @@
                     <div data-rel="网络">
                         
                         网络
-                        <small>(1)</small>
+                        <small>(2)</small>
                         
                     </div>
                     
@@ -137,8 +138,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2">
-<input type="hidden" id="yelog_site_word_count" value="502">
+<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_word_count" value="835">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -191,6 +192,10 @@
                 <i class="iconfont icon-tag"></i><a>TCP</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>UDP</a>
+            </li>
+        
     </div>
 
 </div>
@@ -201,6 +206,14 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 网络 "
+           href="/2021/05/14/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="TCP,UDP"
+           data-author="wong" >
+            <span class="post-title" title="TCP和UDP的区别">TCP和UDP的区别</span>
+            <span class="post-date" title="2021-05-14 17:46:50">2021/05/14</span>
+        </a>
         
         <a  class="全部文章 网络 "
            href="/2021/05/14/TCP-IP%E6%A6%82%E5%BF%B5/"
