@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>TCP IP概念</title>
+      <link href="2021/05/14/TCP-IP%E6%A6%82%E5%BF%B5/"/>
+      <url>2021/05/14/TCP-IP%E6%A6%82%E5%BF%B5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何学习"><a href="#如何学习" class="headerlink" title="如何学习"></a>如何学习</h1><p>只看书学习是很枯燥的，并且死记硬背的东西不理解，记忆也不会牢固。所以后面的一些学习会有一些模拟实验的过程，借鉴一些前辈学习的经验。例如看完一个协议，可以通过抓包工具或者编写小程序加深理解的过程。</p><h1 id="TCP-IP概念"><a href="#TCP-IP概念" class="headerlink" title="TCP IP概念"></a>TCP IP概念</h1><p>首先IP是网络层协议，TCP UDP是传输层协议。</p><p>为什么需要IP协议，因为如果只依赖数据链路层Ethernet，数据包只能在广播域传播。</p><p>为什么需要TCP，因为众多应用层的协议需要实现可靠的数据包传输，如果没有TCP靠Ethernet并不能支持可靠传输的任务。而应用层期望得到的可靠传输机制是相同的，所以在此基础上抽象出TCP的概念。</p><p>TCP提供了封装的接口函数提供可靠传输，socket。用port来辨别应用层协议。</p><p>只要IP不需要TCP也是不可以的，IP可以标识的上层协议的数量是有限的，且大多被占用了。</p><p>UDP有什么好处，UDP可以标识的上层协议数多达65535种，UDP无状态，IP也是无状态，状态都由上层协议控制，这也是它被众多使用的原因。</p><h1 id="概念扩展"><a href="#概念扩展" class="headerlink" title="概念扩展"></a>概念扩展</h1><h2 id="广播域"><a href="#广播域" class="headerlink" title="广播域"></a>广播域</h2><p>任意连接到同一台以太网中继器或者交换机的电脑都属于一个广播域。其中任何一个节点可以在数据链路层通过广播的方式到达任意其他节点。</p><h2 id="以太网中继器"><a href="#以太网中继器" class="headerlink" title="以太网中继器"></a>以太网中继器</h2><p>中继器是用来加强电缆中的信号，把信号送得更远，以延展网络长度。信号强度会随着传递长度的增加而递减。因此需要中继器将信号重新加强以增加资料的发送距离。</p><h1 id="巨人的肩膀"><a href="#巨人的肩膀" class="headerlink" title="巨人的肩膀"></a>巨人的肩膀</h1><p>1.<a href="https://www.zhihu.com/question/20583641/answer/104529492?f3fb8ead20=29d476a5746f5dd5ae8a296354e817de">通俗理解TCP IP</a></p><p>2.<a href="https://zh.wikipedia.org/wiki/%E5%B9%BF%E6%92%AD%E5%9F%9F">广播域</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hello xiaojia</title>
+      <link href="2021/05/13/hello-xiaojia/"/>
+      <url>2021/05/13/hello-xiaojia/</url>
+      
+        <content type="html"><![CDATA[<p>hello xiaojia.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
