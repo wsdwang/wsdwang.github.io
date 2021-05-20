@@ -6,18 +6,17 @@
   <meta name="keywords" content=" TCP , UDP ">
   <meta name="description" content="TCP和UDP的区别 | wong&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="对比   UDP TCP    无连接 面向连接   支持一对一、一对多、多对一和多对多的通信 只支持一对一，但支持全双工   直接打包用户层交付的报文 面向字节流   尽最大努力交付 可靠传输，使用流量控制和拥塞控制   首部仅占8字节 首部占20~60字节   概念扩展面向报文应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则">
+<meta name="description" content="一、概念意思是利用滑动窗口机制让发送方的发送速率不要太快，让接收方来得及接收。 二、要点（一）接收方利用自己的接收窗口大小来限制发送方的发送窗口大小。（二）发送方收到接收方的零窗口通知后，启动持续计时器。若持续计时器超时，发送方向接收方发送零窗口探测报文。 三、相关题目题目：主机甲和主机乙之间建立了一个TCP连接，TCP最大段长度为1000字节，若主机甲的当前拥塞窗口为4000字节，在主机甲向主机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP和UDP的区别">
-<meta property="og:url" content="http://example.com/2021/05/14/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="TCP的流量控制">
+<meta property="og:url" content="http://example.com/2021/05/20/TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/index.html">
 <meta property="og:site_name" content="wong&#39;s blog">
-<meta property="og:description" content="对比   UDP TCP    无连接 面向连接   支持一对一、一对多、多对一和多对多的通信 只支持一对一，但支持全双工   直接打包用户层交付的报文 面向字节流   尽最大努力交付 可靠传输，使用流量控制和拥塞控制   首部仅占8字节 首部占20~60字节   概念扩展面向报文应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则">
+<meta property="og:description" content="一、概念意思是利用滑动窗口机制让发送方的发送速率不要太快，让接收方来得及接收。 二、要点（一）接收方利用自己的接收窗口大小来限制发送方的发送窗口大小。（二）发送方收到接收方的零窗口通知后，启动持续计时器。若持续计时器超时，发送方向接收方发送零窗口探测报文。 三、相关题目题目：主机甲和主机乙之间建立了一个TCP连接，TCP最大段长度为1000字节，若主机甲的当前拥塞窗口为4000字节，在主机甲向主机">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-14T09:46:50.000Z">
-<meta property="article:modified_time" content="2021-05-14T09:51:05.409Z">
+<meta property="article:published_time" content="2021-05-20T07:49:56.000Z">
+<meta property="article:modified_time" content="2021-05-20T07:53:05.915Z">
 <meta property="article:author" content="望岳阁">
 <meta property="article:tag" content="TCP">
-<meta property="article:tag" content="UDP">
 <meta name="twitter:card" content="summary">
 
 
@@ -100,24 +99,10 @@
         
             
                 <li>
-                    <div data-rel="生活">
-                        
-                        生活
-                        <small>(1)</small>
-                        
-                    </div>
-                    
-                </li>
-            
-        
-    
-        
-            
-                <li>
                     <div data-rel="网络">
                         
                         网络
-                        <small>(2)</small>
+                        <small>(3)</small>
                         
                     </div>
                     
@@ -139,7 +124,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="3">
-<input type="hidden" id="yelog_site_word_count" value="835">
+<input type="hidden" id="yelog_site_word_count" value="1.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -185,10 +170,6 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>hello</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>TCP</a>
             </li>
         
@@ -208,6 +189,14 @@
     <nav id="title-list-nav">
         
         <a  class="全部文章 网络 "
+           href="/2021/05/20/TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/"
+           data-tag="TCP"
+           data-author="wong" >
+            <span class="post-title" title="TCP的流量控制">TCP的流量控制</span>
+            <span class="post-date" title="2021-05-20 15:49:56">2021/05/20</span>
+        </a>
+        
+        <a  class="全部文章 网络 "
            href="/2021/05/14/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/"
            data-tag="TCP,UDP"
            data-author="wong" >
@@ -221,14 +210,6 @@
            data-author="wong" >
             <span class="post-title" title="TCP IP概念">TCP IP概念</span>
             <span class="post-date" title="2021-05-14 15:45:43">2021/05/14</span>
-        </a>
-        
-        <a  class="全部文章 生活 "
-           href="/2021/05/13/hello-xiaojia/"
-           data-tag="hello"
-           data-author="wong" >
-            <span class="post-title" title="hello xiaojia">hello xiaojia</span>
-            <span class="post-date" title="2021-05-13 16:13:11">2021/05/13</span>
         </a>
         
         <div id="no-item-tips">
@@ -280,12 +261,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-05-14 17:51:05'>2021-05-14 17:46</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-20 15:57:47'>2021-05-14 17:46</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:333</span>
+        <span>字数:337</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -315,7 +296,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94"><span class="toc-text">对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E6%89%A9%E5%B1%95"><span class="toc-text">概念扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E6%8A%A5%E6%96%87"><span class="toc-text">面向报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-text">面向字节流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A8%E4%BA%BA%E7%9A%84%E8%82%A9%E8%86%80"><span class="toc-text">巨人的肩膀</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AF%B9%E6%AF%94"><span class="toc-text">一、对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A6%82%E5%BF%B5%E6%89%A9%E5%B1%95"><span class="toc-text">二、概念扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E9%9D%A2%E5%90%91%E6%8A%A5%E6%96%87"><span class="toc-text">（一）面向报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-text">（二）面向字节流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A8%E4%BA%BA%E7%9A%84%E8%82%A9%E8%86%80"><span class="toc-text">巨人的肩膀</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -331,7 +312,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h1><table>
+        <h2 id="一、对比"><a href="#一、对比" class="headerlink" title="一、对比"></a>一、对比</h2><table>
 <thead>
 <tr>
 <th>UDP</th>
@@ -359,8 +340,8 @@
 <td>首部占20~60字节</td>
 </tr>
 </tbody></table>
-<h1 id="概念扩展"><a href="#概念扩展" class="headerlink" title="概念扩展"></a>概念扩展</h1><h2 id="面向报文"><a href="#面向报文" class="headerlink" title="面向报文"></a>面向报文</h2><p>应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。</p>
-<h2 id="面向字节流"><a href="#面向字节流" class="headerlink" title="面向字节流"></a>面向字节流</h2><p>TCP发送报文时，是将应用层数据写入TCP缓冲区中，然后由TCP协议来控制发送这里面的数据，而发送的状态是按字节流的方式发送的，跟应用层写下来的报文长度没有任何关系，所以说是流。</p>
+<h2 id="二、概念扩展"><a href="#二、概念扩展" class="headerlink" title="二、概念扩展"></a>二、概念扩展</h2><h3 id="（一）面向报文"><a href="#（一）面向报文" class="headerlink" title="（一）面向报文"></a>（一）面向报文</h3><p>应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序尽量选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。</p>
+<h3 id="（二）面向字节流"><a href="#（二）面向字节流" class="headerlink" title="（二）面向字节流"></a>（二）面向字节流</h3><p>TCP发送报文时，是将应用层数据写入TCP缓冲区中，然后由TCP协议来控制发送这里面的数据，而发送的状态是按字节流的方式发送的，跟应用层写下来的报文长度没有任何关系，所以说是流。</p>
 <h1 id="巨人的肩膀"><a href="#巨人的肩膀" class="headerlink" title="巨人的肩膀"></a>巨人的肩膀</h1><p>1.<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c4411d7jb?p=59&spm_id_from=pageDriver">计算机网络微课堂</a></p>
 <p>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ce123_zhouwei/article/details/8976006">面向报文UDP和面向字节流TCP的区别</a></p>
 
