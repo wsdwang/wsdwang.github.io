@@ -14,7 +14,7 @@
 <meta property="og:description" content="一、概念某段时间，若对网络中某个资源的需求超过该资源提供的可用部分，网络性能会变坏，这种情况叫做拥塞。涉及到的带宽、交换结点中的缓存和处理机等，都是网络的资源。 二、四种算法首先需要说明的是，以下讨论问题的传输单位是最大报文段（MSS）的个数为单位。不是以字节为单位。 （一）慢开始TCP建立连接后，拥塞窗口（cwnd）被设置为1，这时发送窗口（swnd）等于拥塞窗口大小，我们先假设拥塞门限值（ss">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-20T11:08:47.000Z">
-<meta property="article:modified_time" content="2021-05-20T11:11:57.442Z">
+<meta property="article:modified_time" content="2021-05-20T11:14:11.904Z">
 <meta property="article:author" content="望岳阁">
 <meta property="article:tag" content="TCP">
 <meta property="article:tag" content="拥塞控制">
@@ -274,12 +274,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-05-20 19:11:57'>2021-05-20 19:08</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-20 19:14:11'>2021-05-20 19:08</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:772</span>
+        <span>字数:786</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -309,7 +309,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9B%E7%A7%8D%E7%AE%97%E6%B3%95"><span class="toc-text">二、四种算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%85%A2%E5%BC%80%E5%A7%8B"><span class="toc-text">（一）慢开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="toc-text">（二）拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%BF%AB%E9%87%8D%E4%BC%A0"><span class="toc-text">（三）快重传</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1.背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A6%81%E7%82%B9"><span class="toc-text">2.要点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%BE%E4%BE%8B"><span class="toc-text">3.举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%BF%AB%E6%81%A2%E5%A4%8D"><span class="toc-text">（四）快恢复</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4%E7%BA%BF"><span class="toc-text">三、更新时间线</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="toc-text">一、概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9B%E7%A7%8D%E7%AE%97%E6%B3%95"><span class="toc-text">二、四种算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%85%A2%E5%BC%80%E5%A7%8B"><span class="toc-text">（一）慢开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="toc-text">（二）拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%BF%AB%E9%87%8D%E4%BC%A0"><span class="toc-text">（三）快重传</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF"><span class="toc-text">1.背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A6%81%E7%82%B9"><span class="toc-text">2.要点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%BE%E4%BE%8B"><span class="toc-text">3.举例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%BF%AB%E6%81%A2%E5%A4%8D"><span class="toc-text">（四）快恢复</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4%E7%BA%BF"><span class="toc-text">三、更新时间线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A8%E4%BA%BA%E7%9A%84%E8%82%A9%E8%86%80"><span class="toc-text">巨人的肩膀</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -351,6 +351,7 @@
 <p>发送方将拥塞门限值调整为当前窗口的一半，拥塞窗口也更新拥塞门限值的大小。然后执行拥塞避免算法。</p>
 <h2 id="三、更新时间线"><a href="#三、更新时间线" class="headerlink" title="三、更新时间线"></a>三、更新时间线</h2><p>1988年，TCP Tahoe版本，提出慢开始和拥塞避免算法。</p>
 <p>1990年，TCP Reno版本，增加了快重传和快恢复算法。改进了TCP的性能。</p>
+<h2 id="巨人的肩膀"><a href="#巨人的肩膀" class="headerlink" title="巨人的肩膀"></a>巨人的肩膀</h2><p>1.<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c4411d7jb?p=59&spm_id_from=pageDriver">计算机网络微课堂</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至首页邮箱。 </span>
